@@ -5,9 +5,6 @@ using UnityEngine;
 public class ChunkSpawner : MonoBehaviour
 {
     public static ChunkSpawner instance;
-
-    [SerializeField] private Transform spawningPlace;
-    //private Queue<GameObject> chunks;
     [SerializeField] private GameObject endChunk;
 
     private void Awake()
@@ -20,12 +17,12 @@ public class ChunkSpawner : MonoBehaviour
 
     public void SpawnChunk(GameObject chunk)
     {
-        chunk.transform.position = spawningPlace.position;
+        chunk.transform.position = this.gameObject.transform.position;
     }
 
     public void SpawnEndChunk()
     {
         endChunk.SetActive(true);
-        endChunk.transform.position = spawningPlace.position;
+        endChunk.transform.position = this.gameObject.transform.position;
     }
 }

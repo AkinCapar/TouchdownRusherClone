@@ -5,26 +5,25 @@ using UnityEngine;
 public class Chunk : MonoBehaviour
 {
     ChunkSpawner chunkSpawner;
-
-    [SerializeField] private float speed = 0;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         chunkSpawner = ChunkSpawner.instance;
+        gameManager = GameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.forward * speed * Time.deltaTime;
+        transform.position -= transform.forward * gameManager.gameSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ChunkEnd")
         {
-            Debug.Log("YEEEEESSS");
             chunkSpawner.SpawnChunk(this.gameObject);
         }
     }
