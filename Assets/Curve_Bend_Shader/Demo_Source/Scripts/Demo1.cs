@@ -16,7 +16,7 @@
             curveControl.CurveOn = true;
             isInProcess = false;
             StopAllCoroutines();
-            switch (UIManager.Instance.ExampleId)
+            /*switch (UIManager.Instance.ExampleId)
             {
                 case 0:
                     ChangeCurve0();
@@ -30,7 +30,7 @@
                 case 3:
                     ChangeCurve3();
                     break;
-            }
+            }*/
         }
         bool isInProcess = false;
         void ChangeCurve0()
