@@ -22,7 +22,7 @@ public class Chunk : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "ChunkEnd")
+        if (other.gameObject.tag == "Collector")
         {
             chunkSpawner.SpawnChunk(this.gameObject);
         }
