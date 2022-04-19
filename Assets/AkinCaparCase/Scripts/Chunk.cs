@@ -7,6 +7,8 @@ public class Chunk : MonoBehaviour
     ChunkSpawner chunkSpawner;
     GameManager gameManager;
 
+    private int spawnedChunkCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class Chunk : MonoBehaviour
     void Update()
     {
         transform.position -= transform.forward * gameManager.gameSpeed * Time.deltaTime;
+        Debug.Log(spawnedChunkCounter);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +28,16 @@ public class Chunk : MonoBehaviour
         if (other.gameObject.tag == "Collector")
         {
             chunkSpawner.SpawnChunk(this.gameObject);
+            spawnedChunkCounter++;
+        }
+
+        if (spawnedChunkCounter == gameManager.levelLength)
+        {
+            chunkSpawner.SpawnEndChunk();
+            gameManager.StopSpawners();
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
+
 }

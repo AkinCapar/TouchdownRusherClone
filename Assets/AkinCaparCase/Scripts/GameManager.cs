@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int levelLength;
+    public int levelLength; // amount of chunks cycle
     public float gameSpeed;
+
+    [SerializeField] private GameObject spawners;
 
     private void Awake()
     {
@@ -17,15 +19,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void StopSpawners()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spawners.SetActive(false);
     }
 }

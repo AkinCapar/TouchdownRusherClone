@@ -33,7 +33,6 @@ public class TeammateSpawner : MonoBehaviour
 
     IEnumerator SpawnTeammate()
     {
-        Debug.Log("lol");
         timeToNextSpawn = Random.Range(2f, 5f);
         teammateIndex = Random.Range(0, teammates.Count);
 

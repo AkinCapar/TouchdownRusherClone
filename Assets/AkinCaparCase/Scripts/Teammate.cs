@@ -17,7 +17,7 @@ public class Teammate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.forward * gameManager.gameSpeed * Time.deltaTime;
+        transform.position -= transform.forward * (gameManager.gameSpeed -1) * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
