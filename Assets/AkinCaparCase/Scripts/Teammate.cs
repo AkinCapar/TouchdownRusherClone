@@ -7,6 +7,8 @@ public class Teammate : MonoBehaviour
     GameManager gameManager;
     TeammateSpawner teammateSpawner;
 
+    private float teammateSpeedModifier = 0.8f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class Teammate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.forward * (gameManager.gameSpeed -1) * Time.deltaTime;
+        transform.position -= transform.forward * (gameManager.gameSpeed * teammateSpeedModifier) * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +27,23 @@ public class Teammate : MonoBehaviour
         if(other.gameObject.tag == "Collector")
         {
             teammateSpawner.AddToPool(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Teammate")
+        {
+            teammateSpeedModifier = 0;
+        }
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Teammate")
+        {
+            teammateSpeedModifier = 0.8f;
         }
     }
 }

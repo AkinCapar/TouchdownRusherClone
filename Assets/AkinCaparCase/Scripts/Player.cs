@@ -69,4 +69,12 @@ public class Player : MonoBehaviour
             transform.DORotate(new Vector3(0, 90, 0), .1f);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Opponent")
+        {
+            Debug.Log("hope helps");
+        }
+    }
 }
