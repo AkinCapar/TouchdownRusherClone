@@ -8,10 +8,16 @@ public class Player : MonoBehaviour
     private float elapsedTime1; // time during running fast
     private float elapsedTime2; // time during running normal
 
+    private Animator myAnim;
+
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameManager.instance;
+        myAnim = GetComponent<Animator>();
+        myAnim.SetInteger("WinCondition", 0);
     }
 
     // Update is called once per frame
@@ -74,7 +80,14 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Opponent")
         {
-            Debug.Log("hope helps");
+            gameManager.LoseGame();
+            myAnim.enabled = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        myAnim.SetInteger("WinCondition", Random.Range(1, 3));
+        gameManager.WinGame();
     }
 }

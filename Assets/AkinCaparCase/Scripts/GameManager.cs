@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public int levelLength; // amount of chunks cycle
     public float gameSpeed;
+
+    [SerializeField] private GameObject loseCanvas;
+    [SerializeField] private GameObject winCanvas;
 
     [SerializeField] private GameObject spawners;
 
@@ -22,5 +26,24 @@ public class GameManager : MonoBehaviour
     public void StopSpawners()
     {
         spawners.SetActive(false);
+    }
+
+    public void WinGame()
+    {
+        StopSpawners();
+        winCanvas.SetActive(true);
+        gameSpeed = 0;
+    }
+
+    public void LoseGame()
+    {
+        StopSpawners();
+        loseCanvas.SetActive(true);
+        gameSpeed = 0;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

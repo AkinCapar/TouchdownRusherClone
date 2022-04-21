@@ -24,6 +24,6 @@ public class ChunkSpawner : MonoBehaviour
     public void SpawnEndChunk()
     {
         endChunk.SetActive(true);
-        endChunk.transform.position = this.gameObject.transform.position;
+        endChunk.transform.position = this.gameObject.transform.position - new Vector3(-1, 0, 0);
     }
 }
