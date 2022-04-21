@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
     private void RunNormal()
     {
+        gameManager.SwitchToNormalCam();
         Time.timeScale = 1; // to switch normal run speed
 
         elapsedTime2 += Time.deltaTime;
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
 
     private void RunFast()
     {
+        gameManager.SwitchToFastCam();
         Time.timeScale = 1.5f; // to make it run fast both visually and physically
 
         elapsedTime2 = 0;

@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject spawners;
 
+    [SerializeField] private GameObject fastCam;
+    [SerializeField] private GameObject normalCam;
+
     private void Awake()
     {
         if(instance == null)
@@ -45,5 +48,17 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SwitchToFastCam()
+    {
+        fastCam.SetActive(true);
+        normalCam.SetActive(false);
+    }
+
+    public void SwitchToNormalCam()
+    {
+        fastCam.SetActive(false);
+        normalCam.SetActive(true);
     }
 }
