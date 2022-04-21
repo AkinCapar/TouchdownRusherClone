@@ -20,7 +20,6 @@ public class Chunk : MonoBehaviour
     void Update()
     {
         transform.position -= transform.forward * gameManager.gameSpeed * Time.deltaTime;
-        Debug.Log(spawnedChunkCounter);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject fastCam;
     [SerializeField] private GameObject normalCam;
 
+    public bool endChunkSpawned = false;
+
     private void Awake()
     {
         if(instance == null)

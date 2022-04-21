@@ -7,7 +7,7 @@ public class Teammate : MonoBehaviour
     GameManager gameManager;
     TeammateSpawner teammateSpawner;
 
-    private float teammateSpeedModifier = 0.8f;
+    private float teammateSpeedModifier = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,15 @@ public class Teammate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.forward * (gameManager.gameSpeed * teammateSpeedModifier) * Time.deltaTime;
+        if(gameManager.endChunkSpawned == true)
+        {
+            transform.position += transform.forward * gameManager.gameSpeed * .25f * Time.deltaTime;
+        }
+
+        else
+        {
+            transform.position -= transform.forward * (gameManager.gameSpeed * teammateSpeedModifier) * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

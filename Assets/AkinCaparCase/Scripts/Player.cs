@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
     private Animator myAnim;
 
+    [SerializeField] private Rigidbody ball;
+
     GameManager gameManager;
 
     // Start is called before the first frame update
@@ -84,6 +86,8 @@ public class Player : MonoBehaviour
         {
             gameManager.LoseGame();
             myAnim.enabled = false;
+            //ball.gameObject.transform.position -= transform.up * Time.deltaTime;
+            ball.useGravity = true;
         }
     }
 
@@ -91,5 +95,7 @@ public class Player : MonoBehaviour
     {
         myAnim.SetInteger("WinCondition", Random.Range(1, 3));
         gameManager.WinGame();
+        //ball.gameObject.transform.position -= transform.up * Time.deltaTime;
+        ball.useGravity = true;
     }
 }

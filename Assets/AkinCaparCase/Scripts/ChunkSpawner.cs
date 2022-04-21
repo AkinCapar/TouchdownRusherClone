@@ -8,12 +8,19 @@ public class ChunkSpawner : MonoBehaviour
 
     [SerializeField] private GameObject endChunk;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }
+    }
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
     }
 
     public void SpawnChunk(GameObject chunk)
@@ -25,5 +32,7 @@ public class ChunkSpawner : MonoBehaviour
     {
         endChunk.SetActive(true);
         endChunk.transform.position = this.gameObject.transform.position - new Vector3(-1, 0, 0);
+        gameManager.endChunkSpawned = true;
+
     }
 }
